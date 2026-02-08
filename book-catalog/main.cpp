@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <string>
 
 int main() {
     std::cout << "                            " << std::endl;
@@ -9,6 +10,16 @@ int main() {
     std::cout << "                            " << std::endl;
 
     int choice;
+
+    struct Book {
+        std::string title;
+        std::string author;
+        int year;
+    };
+
+    Book books[100];
+    int books_count = 0;
+
 
     do {
     std::cout << "                                     \n";
@@ -29,11 +40,23 @@ int main() {
            std::cin.clear();
            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
            choice = -1;
-           continue;       
+           continue;
        }
 
     if (choice == 1) {
-        std::cout << "Add book selected" << std::endl;
+
+        std::cin.ignore();
+
+        std::cout << "Enter the title of the book: ";
+        std::getline(std::cin, books[books_count].title);
+
+        std::cout << "Enter the author of the book: ";
+        std::getline(std::cin, books[books_count].author);
+
+        std::cout << "Enter the year the book was published: ";
+        std::cin >> books[books_count].year;
+
+        books_count++;
     }
 
     else if (choice == 2) {
