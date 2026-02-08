@@ -60,7 +60,17 @@ int main() {
     }
 
     else if (choice == 2) {
-             std::cout << "Show books selected" << std::endl;
+             if (books_count == 0) {
+                 std::cout << "There are no books yet. But you can fix that =)" << std::endl;
+             }
+
+             else {
+                  for (int i = 0; i < books_count; i++) {
+                       std::cout << "Title: " << books[i].title << "\n";
+                       std::cout << "Author: " << books[i].author << "\n";
+                       std::cout << "Year: " << books[i].year << "\n";
+                  }
+             }
     }
 
     else if (choice == 0) {
