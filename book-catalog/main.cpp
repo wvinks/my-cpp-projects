@@ -33,20 +33,38 @@ void addBook (Book books[], int& books_count) {
               std::getline(std::cin, books[books_count].author);
 
               std::cout << "Enter the year the book was published: ";
-              std::cin >> books[books_count].year;
+              while (true) {
+                     std::cin >> books[books_count].year;
+
+                     if (std::cin.fail()) {
+                         std::cout << "Error! Please enter a number. \n";
+                         std::cout << "------------------------------\n";
+                         std::cin.clear();
+                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                     }
+
+                     else {
+                          break;
+                     }
+
+              std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+              }
 
               books_count++;
+
+                  std::cout << "                                        \n";
+                  std::cout << "Book successfully added to the catalog! \n";
        }
-}  
+}
 
 void showBooks (Book books[], int books_count) {
                 if (books_count == 0) {
-                    std::cout << "There are no books yet. But you can fix that =)" << std::endl;
+                    std::cout << "There are no books yet. But you can fix that =) \n";
                 }
 
                 else {
                      for (int i = 0; i < books_count; i++) {
-                          std::cout << "       " << "\n";
+                          std::cout << "       \n";
                           std::cout << "Title: " << books[i].title << "\n";
                           std::cout << "Author: " << books[i].author << "\n";
                           std::cout << "Year: " << books[i].year << "\n";
@@ -94,12 +112,12 @@ int main() {
     }
 
     else if (choice == 0) {
-             std::cout << "Goodbye!" << std::endl;
+             std::cout << "Goodbye! \n";
     }
 
     else {
-         std::cout << "Invalid choice" << std::endl;
-         std::cout << "--------------" << std::endl;
+         std::cout << "Invalid choice \n";
+         std::cout << "-------------- \n";
     }
     } while (choice != 0);
 
